@@ -32,7 +32,8 @@ public class BoardManager : MonoBehaviour {
 	private Transform borderHandler;
 	private List<Vector3> gridPositions = new List<Vector3>();
 
-	void InitializeList() {
+	void InitializeList() 
+	{
 		gridPositions.Clear();
 
 		for (int x = 1; x < columns - 1; x++) {
@@ -42,7 +43,8 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	void BoardSetup() {
+	void BoardSetup() 
+	{
 		borderHandler = new GameObject("Board").transform;
 		for (int x = -1; x < columns + 1; x++) {
 			for (int y = -1; y < rows + 1; y++) {
@@ -57,7 +59,8 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	Vector3 RandomPosition() {
+	Vector3 RandomPosition() 
+	{
 		int randomIndex = Random.Range(0, gridPositions.Count);
 		Vector3 randomPosition = gridPositions[randomIndex];
 		gridPositions.RemoveAt(randomIndex);
@@ -65,7 +68,8 @@ public class BoardManager : MonoBehaviour {
 		return randomPosition;
 	}
 	
-	void LayoutObjectRandom(GameObject[] titleArray, int minimum, int maximum) {
+	void LayoutObjectRandom(GameObject[] titleArray, int minimum, int maximum) 
+	{
 		int objectCount = Random.Range(minimum, maximum + 1);
 		for (int i= 0; i < objectCount; i++) {
 			Vector3 randomPosition = RandomPosition();
@@ -74,7 +78,8 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	public void SetupScene(int level) {
+	public void SetupScene(int level) 
+	{
 		BoardSetup();
 		InitializeList();
 		LayoutObjectRandom(wallTitles, wallCount.minimum, wallCount.maximum);
